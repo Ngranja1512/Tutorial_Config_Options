@@ -121,6 +121,36 @@ builder.Configuration.AddUserSecrets<Program>(
 //builder.Configuration.AddCommandLine(
 //    args, switchMappings);
 
+//We can then add the IConfigurationRoot to an option class like this:
+
+// var host = Host.CreateDefaultBuilder()
+//     .ConfigureServices((context, services) =>
+//     {
+//         services
+//             .AddOptions<CommandLineOption>()
+//             .Bind(config) 
+//             .ValidateOnStart();
+//                 
+//         services.AddSingleton<IDataGateway,Core.Services.DataGateway>();
+//     })
+//     .Build();
+//         
+// var appSettings = host.Services.GetRequiredService<IOptions<CommandLineOption>>().Value;
+
+//Another example of a mapping from short to long command line flags:
+// static string[] MapShortFlagsToLong(string[] args)
+// {
+//     var flagMappings = new Dictionary<string, string>
+//     {
+//         { "-c", "--config" },
+//         { "-h", "--help" },
+//         { "-l", "--log" },
+//         { "-d", "--debug" },
+//     };
+//
+//     return args.Select(arg => flagMappings.TryGetValue(arg.ToLower(), out var longName) ? $"{longName}=true" : $"{arg}=true").ToArray();
+// }
+
 #endregion
 
 #region Key-per file (/key)
